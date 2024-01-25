@@ -20,6 +20,8 @@
             <textarea id="content" name="article_content" class="shadow appearance-none border rounded w-full h-56 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-400 focus:ring-red-400 resize-none"> {{ $article->content }}</textarea>
         </div>
 
+        asd
+
         <div class="flex justify-end">
             <input type="submit" class="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="Update">
         </div>

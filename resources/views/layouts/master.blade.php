@@ -25,7 +25,8 @@
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
         <a href="{{ route('home') }}" class="text-sm font-semibold leading-6 text-gray-900">Home</a>
-        <a href="{{ route('articles') }}" class="text-sm font-semibold leading-6 text-gray-900">Go to articles</a>
+        <a href="{{ route('articles') }}" class="text-sm font-semibold leading-6 text-gray-900">Articles</a>
+        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Cars</a>
     </div>
 
 

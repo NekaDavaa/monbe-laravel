@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WelcomeRequest;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -11,12 +12,9 @@ class WelcomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(WelcomeRequest $request)
     {
-        $validatedData = $request->validate([
-            'first_name' => 'required|min:3'
-        ]);
-        $first_name = $validatedData['first_name'];
+        $first_name = $request->input('first_name');
         session()->flash('first_name', $first_name);
         return redirect('/');
     }

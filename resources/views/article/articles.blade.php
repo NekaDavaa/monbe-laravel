@@ -2,7 +2,7 @@
 @section('title', 'Articles')
 @section('content')
     <div class="flex justify-between items-center">
-        <h1 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">
+        <h1 class="text-3xl font-semibold text-gray-700 mb-4">
             All Articles
         </h1>
         @auth
@@ -23,8 +23,8 @@
             </div>
         </div>
     @endif
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 table-auto">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 table-auto">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
             @auth
             <th scope="col" class="px-6 py-3">
@@ -44,7 +44,7 @@
         </thead>
         <tbody>
         @foreach($articles as $article)
-            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+            <tr class="odd:bg-white even:bg-gray-50 border-b">
                 @auth
                 <td class="px-6 py-4">
                     {{ $article->id }}
@@ -69,7 +69,7 @@
                         </div>
                     @endauth
                         @guest
-                    <a href="/article/show/{{ $article->id }}" class="font-medium text-red-400 dark:text-red-400 hover:text-red-500">Visit article</a>
+                    <a href="/article/show/{{ $article->id }}" class="font-medium text-red-400 hover:text-red-500">Visit article</a>
                     @endguest
                 </td>
             </tr>

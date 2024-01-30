@@ -2,7 +2,7 @@
 @section('title', 'Articles')
 @section('content')
     <div class="flex justify-between items-center">
-        <h1 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">
+        <h1 class="text-3xl font-semibold text-gray-700 mb-4">
             Create a new post
         </h1>
     </div>

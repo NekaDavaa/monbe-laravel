@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,7 @@ Route::post('/articles/new', [ArticleController::class, 'store'])->name('article
 Route::get('/article/edit/{id}', [ArticleController::class, 'edit'])->name('articles.edit');
 Route::put('/article/update/{id}', [ArticleController::class, 'update'])->name('article.update');
 Route::get('/article/show/{id}', [ArticleController::class, 'show'])->name('article.show');
-
+Route::get('/cars', [CarController::class, 'index'])->name('cars');
 
 
 require __DIR__.'/auth.php';

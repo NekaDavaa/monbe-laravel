@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Car;
 use App\Models\RegistrationNumber;
 use Illuminate\Http\Request;
 
-class CarController extends Controller
+class RegistrationNumberController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +14,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::with('registrationNumber')->orderby('id', 'desc')->get();
-
-        //$cars = Car::find('1')->registrationNumber;
-        //$cars = Car::with('registrationNumber')->orderBy('id', 'desc')->get();
-        return view('car.cars', compact('cars'));
+        //
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +24,7 @@ class CarController extends Controller
      */
     public function create()
     {
-    return view('car.create');
+        //
     }
 
     /**
@@ -42,23 +35,16 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $car = Car::create([
-            'car_name' => $request->car_name,
-        ]);
-        $registrationNumber = new RegistrationNumber([
-            'registration_number' => $request->registration_number,
-        ]);
-        $car->registrationNumber()->save($registrationNumber);
-        return redirect()->route('cars')->with('notification', 'Записът е създаден успешно!');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Car  $car
+     * @param  \App\Models\RegistrationNumber  $registrationNumber
      * @return \Illuminate\Http\Response
      */
-    public function show(Car $car)
+    public function show(RegistrationNumber $registrationNumber)
     {
         //
     }
@@ -66,10 +52,10 @@ class CarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Car  $car
+     * @param  \App\Models\RegistrationNumber  $registrationNumber
      * @return \Illuminate\Http\Response
      */
-    public function edit(Car $car)
+    public function edit(RegistrationNumber $registrationNumber)
     {
         //
     }
@@ -78,10 +64,10 @@ class CarController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Car  $car
+     * @param  \App\Models\RegistrationNumber  $registrationNumber
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Car $car)
+    public function update(Request $request, RegistrationNumber $registrationNumber)
     {
         //
     }
@@ -89,12 +75,11 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\RegistrationNumber  $registrationNumber
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(RegistrationNumber $registrationNumber)
     {
-        $articles = Car::destroy($id);
-        return redirect()->back()->with('notification', 'Записът е изтрит успешно!');
+        //
     }
 }

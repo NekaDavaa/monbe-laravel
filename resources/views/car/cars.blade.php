@@ -6,7 +6,7 @@
             All Cars
         </h1>
 {{--        @auth--}}
-            <a href="#" class="text-yellow-700 text-3xl mb-4">
+            <a href="{{ route('cars.create') }}" class="text-yellow-700 text-3xl mb-4">
                 <i class="fas fa-plus"></i>
             </a>
 {{--        @endauth--}}
@@ -26,16 +26,16 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 table-auto">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-{{--                @auth--}}
+                @auth
                     <th scope="col" class="px-6 py-3">
                         ID
                     </th>
-{{--                @endauth--}}
+                @endauth
                 <th scope="col" class="px-6 py-3">
                     Title
                 </th>
                 <th scope="col" class="px-6 py-3 w-2/5">
-                    Content
+                    Reg Nubmer.
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
@@ -43,37 +43,40 @@
             </tr>
             </thead>
             <tbody>
-{{--            @foreach($articles as $article)--}}
+            @foreach($cars as $car)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
-{{--                    @auth--}}
+                    @auth
                         <td class="px-6 py-4">
-{{--                            {{ $article->id }}--}}
+                            {{ $car->id }}
                         </td>
-{{--                    @endauth--}}
+                    @endauth
                     <td class="px-6 py-4">
-{{--                        {{ $article->title }}--}}
+                        {{ $car ->car_name }}
                     </td>
-                    <td class="px-6 py-4 w-2/5">
-{{--                        {{ Str::limit($article->content, 100) }}--}}
-                    </td>
+
+                        <td class="px-6 py-4">
+                            @if($car->registrationNumber)
+                            {{ $car->registrationNumber->registration_number }}
+                            @endif
+                        </td>
                     <td class="px-6 py-4">
-{{--                        @auth--}}
+                        @auth
                             <div class="flex items-center">
                                 <a href="#" class="text-blue-500 hover:text-blue-600 mr-4" aria-label="Edit">
                                     <i class="fas fa-edit" title="Edit"></i>
                                 </a>
                                 <span class="text-gray-300">|</span>
-                                <a href="#" class="text-red-500 hover:text-red-600 ml-4" aria-label="Delete">
+                                <a href="/car/delete/{{ $car->id }}" class="text-red-500 hover:text-red-600 ml-4" aria-label="Delete">
                                     <i class="fas fa-trash-alt" title="Delete"></i>
                                 </a>
                             </div>
-{{--                        @endauth--}}
-{{--                        @guest--}}
+                        @endauth
+                        @guest
                             <a href="#" class="font-medium text-red-400 hover:text-red-500">Visit article</a>
-{{--                        @endguest--}}
+                        @endguest
                     </td>
                 </tr>
-{{--            @endforeach--}}
+            @endforeach
             </tbody>
         </table>
 {{--        {{ $articles->links() }}--}}

@@ -33,6 +33,9 @@ Route::get('/article/edit/{id}', [ArticleController::class, 'edit'])->name('arti
 Route::put('/article/update/{id}', [ArticleController::class, 'update'])->name('article.update');
 Route::get('/article/show/{id}', [ArticleController::class, 'show'])->name('article.show');
 Route::get('/cars', [CarController::class, 'index'])->name('cars');
+Route::get('/cars/new', [CarController::class, 'create'])->name('cars.create');
+Route::post('/cars/new', [CarController::class, 'store'])->name('car.store');
+Route::get('/car/delete/{id?}', [CarController::class, 'destroy'])->name('car.destroy');
 
 
 require __DIR__.'/auth.php';

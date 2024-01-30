@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCarRequest;
 use App\Models\Car;
 use App\Models\RegistrationNumber;
 use Illuminate\Http\Request;
@@ -40,7 +41,7 @@ class CarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCarRequest $request)
     {
         $car = Car::create([
             'car_name' => $request->car_name,

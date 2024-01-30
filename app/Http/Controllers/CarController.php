@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCarRequest;
 use App\Models\Car;
 use App\Models\RegistrationNumber;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class CarController extends Controller
 {
@@ -16,10 +17,15 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::with('registrationNumber')->orderby('id', 'desc')->get();
+        $registrationNumber = '';
 
-        //$cars = Car::find('1')->registrationNumber;
-        //$cars = Car::with('registrationNumber')->orderBy('id', 'desc')->get();
+        if (!empty($registrationNumber)) {
+            $cars = Car::whereHas('registrationNumber', function (Builder $query) use ($registrationNumber) {
+                $query->where('registration_number', $registrationNumber);
+            })->orderBy('id', 'desc')->get();
+        } else {
+            $cars = Car::all();
+        }
         return view('car.cars', compact('cars'));
     }
 

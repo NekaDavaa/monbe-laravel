@@ -3,10 +3,8 @@
 @section('content')
 
     <div id="app">
-        @verbatim
-        <h1>{{ message }}</h1>
+        <h1>@{{ message }}</h1>
         <input v-model="message" />
-        @endverbatim
     </div>
 
     <div class="flex justify-between items-center">

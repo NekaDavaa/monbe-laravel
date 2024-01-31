@@ -32,6 +32,18 @@ class CarController extends Controller
 
 
 
+    public function submit(Request $request)
+    {
+        $regNumber = $request->input('reg_number');
+        session(['regNumber' => $regNumber]);
+        // Process the regNumber here...
+
+        return response()->json(['regNumber' => $regNumber]);
+    }
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *

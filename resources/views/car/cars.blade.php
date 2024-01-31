@@ -11,7 +11,9 @@
             placeholder="Enter registration number"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-400 focus:ring-red-400"
         />
+        <button @click="submitData">Submit</button>
     </div>
+
 
 
     <div class="flex justify-between items-center">

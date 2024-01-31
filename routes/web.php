@@ -36,6 +36,7 @@ Route::get('/cars', [CarController::class, 'index'])->name('cars');
 Route::get('/cars/new', [CarController::class, 'create'])->name('cars.create');
 Route::post('/cars/new', [CarController::class, 'store'])->name('car.store');
 Route::get('/car/delete/{id?}', [CarController::class, 'destroy'])->name('car.destroy');
+Route::post('/submit', [CarController::class, 'submit'])->name('car.submit');
 
 
 require __DIR__.'/auth.php';

@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.png') }}" />
     <link href="/css/app.css" rel="stylesheet">
-     <title>@yield('title', 'Home')</title>
+    <title>@yield('title', 'Home')</title>
 </head>
 <body>
 <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -55,7 +55,7 @@
         @yield('content')
     </div>
 </main>
-
+<script src="{{ asset('js/myvue.js') }}"></script>
 </body>
 </html>
 

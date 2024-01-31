@@ -1,6 +1,14 @@
 @extends('layouts.master')
 @section('title', 'Cars')
 @section('content')
+
+    <div id="app">
+        @verbatim
+        <h1>{{ message }}</h1>
+        <input v-model="message" />
+        @endverbatim
+    </div>
+
     <div class="flex justify-between items-center">
         <h1 class="text-3xl font-semibold text-gray-700 mb-4">
             All Cars

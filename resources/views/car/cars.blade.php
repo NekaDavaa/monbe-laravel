@@ -28,7 +28,6 @@
         @endif
 
 
-
             <div id="app">
                 <h1>Търсачка:</h1>
                 <input
@@ -41,80 +40,114 @@
                 <button @click="submitData">Submit</button>
 
 
-                <table>
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 table-auto">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        @auth
+                            <th scope="col" class="px-6 py-3">
+                                ID
+                            </th>
+                        @endauth
+                        <th scope="col" class="px-6 py-3">
+                            Title
+                        </th>
+                        <th scope="col" class="px-6 py-3 w-2/5">
+                            Reg Nubmer.
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Action
+                        </th>
+                    </tr>
+                    </thead>
                     <tbody>
-                    @verbatim
                         <tr v-for="car in cars" :key="car.car_id" class="odd:bg-white even:bg-gray-50 border-b">
-                            <td class="px-6 py-4">{{ car.car_name }}</td>
+                            @auth
+                                <td class="px-6 py-4">@{{ car.id }}</td>
+                            @endauth
+                            <td class="px-6 py-4">@{{ car.car_name }}</td>
+                            <td class="px-6 py-4">Pole 2</td>
+
+                            <td class="px-6 py-4">
+                                @auth
+                                    <div class="flex items-center">
+                                        <a href="#" class="text-blue-500 hover:text-blue-600 mr-4" aria-label="Edit">
+                                            <i class="fas fa-edit" title="Edit"></i>
+                                        </a>
+                                        <span class="text-gray-300">|</span>
+                                        <a :href="'/car/delete/' + car.car_id" class="text-red-500 hover:text-red-600 ml-4" aria-label="Delete">
+                                            <i class="fas fa-trash-alt" title="Delete"></i>
+                                        </a>
+                                    </div>
+                                @endauth
+                                @guest
+                                    <a href="#" class="font-medium text-red-400 hover:text-red-500">Visit article</a>
+                                @endguest
+                            </td>
                         </tr>
-                    @endverbatim
                     </tbody>
                 </table>
 
             </div>
 
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 table-auto">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-                @auth
-                    <th scope="col" class="px-6 py-3">
-                        ID
-                    </th>
-                @endauth
-                <th scope="col" class="px-6 py-3">
-                    Title
-                </th>
-                <th scope="col" class="px-6 py-3 w-2/5">
-                    Reg Nubmer.
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($cars as $car)
-                <tr class="odd:bg-white even:bg-gray-50 border-b">
-                    @auth
-                        <td class="px-6 py-4">
-                            {{ $car->id }}
-                        </td>
-                    @endauth
-                    <td class="px-6 py-4">
-                        {{ $car ->car_name }}
-                    </td>
+{{--        <table class="w-full text-sm text-left rtl:text-right text-gray-500 table-auto">--}}
+{{--            <thead class="text-xs text-gray-700 uppercase bg-gray-50">--}}
+{{--            <tr>--}}
+{{--                @auth--}}
+{{--                    <th scope="col" class="px-6 py-3">--}}
+{{--                        ID--}}
+{{--                    </th>--}}
+{{--                @endauth--}}
+{{--                <th scope="col" class="px-6 py-3">--}}
+{{--                    Title--}}
+{{--                </th>--}}
+{{--                <th scope="col" class="px-6 py-3 w-2/5">--}}
+{{--                    Reg Nubmer.--}}
+{{--                </th>--}}
+{{--                <th scope="col" class="px-6 py-3">--}}
+{{--                    Action--}}
+{{--                </th>--}}
+{{--            </tr>--}}
+{{--            </thead>--}}
+{{--            <tbody>--}}
+{{--            @foreach($cars as $car)--}}
+{{--                <tr class="odd:bg-white even:bg-gray-50 border-b">--}}
+{{--                    @auth--}}
+{{--                        <td class="px-6 py-4">--}}
+{{--                            {{ $car->id }}--}}
+{{--                        </td>--}}
+{{--                    @endauth--}}
+{{--                    <td class="px-6 py-4">--}}
+{{--                        {{ $car ->car_name }}--}}
+{{--                    </td>--}}
 
-                        <td class="px-6 py-4">
-                            @if($car->registrationNumber)
-                            {{ $car->registrationNumber->registration_number }}
-                            @endif
-                        </td>
-                    <td class="px-6 py-4">
-                        @auth
-                            <div class="flex items-center">
-                                <a href="#" class="text-blue-500 hover:text-blue-600 mr-4" aria-label="Edit">
-                                    <i class="fas fa-edit" title="Edit"></i>
-                                </a>
-                                <span class="text-gray-300">|</span>
-                                <a href="/car/delete/{{ $car->id }}" class="text-red-500 hover:text-red-600 ml-4" aria-label="Delete">
-                                    <i class="fas fa-trash-alt" title="Delete"></i>
-                                </a>
-                            </div>
-                        @endauth
-                        @guest
-                            <a href="#" class="font-medium text-red-400 hover:text-red-500">Visit article</a>
-                        @endguest
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+{{--                        <td class="px-6 py-4">--}}
+{{--                            @if($car->registrationNumber)--}}
+{{--                            {{ $car->registrationNumber->registration_number }}--}}
+{{--                            @endif--}}
+{{--                        </td>--}}
+{{--                    <td class="px-6 py-4">--}}
+{{--                        @auth--}}
+{{--                            <div class="flex items-center">--}}
+{{--                                <a href="#" class="text-blue-500 hover:text-blue-600 mr-4" aria-label="Edit">--}}
+{{--                                    <i class="fas fa-edit" title="Edit"></i>--}}
+{{--                                </a>--}}
+{{--                                <span class="text-gray-300">|</span>--}}
+{{--                                <a href="/car/delete/{{ $car->id }}" class="text-red-500 hover:text-red-600 ml-4" aria-label="Delete">--}}
+{{--                                    <i class="fas fa-trash-alt" title="Delete"></i>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                        @endauth--}}
+{{--                        @guest--}}
+{{--                            <a href="#" class="font-medium text-red-400 hover:text-red-500">Visit article</a>--}}
+{{--                        @endguest--}}
+{{--                    </td>--}}
+{{--                </tr>--}}
+{{--            @endforeach--}}
+{{--            </tbody>--}}
+{{--        </table>--}}
 {{--        {{ $articles->links() }}--}}
     </div>
-
-
-
-
-
-
+    <script>
+        window.cars = @json($cars);
+    </script>
 @endsection

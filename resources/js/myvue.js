@@ -5,11 +5,10 @@ var app = new Vue({
     el: '#app',
     data: {
         message: '',
-        cars: [] // Array to store the cars
+        cars: window.cars || []
     },
     methods: {
         submitData() {
-            console.log('asd');
             // Use this.message to send the registration number entered by the user
             axios.post('/cars/filter', {
                 registrationNumber: this.message

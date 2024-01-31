@@ -17,25 +17,10 @@ class CarController extends Controller
      */
     public function index(Request $request)
     {
-        $registrationNumber = '';
-        if (!empty($registrationNumber)) {
-            $cars = Car::whereHas('registrationNumber', function (Builder $query) use ($registrationNumber) {
-                $query->where('registration_number', $registrationNumber);
-            })->orderBy('id', 'desc')->get();
-        } else {
-            $cars = Car::all();
-        }
-
+        $cars = Car::all();
         return view('car.cars', compact('cars'));
     }
 
-
-
-//    public function submit(Request $request)
-//    {
-//        $regNumber = $request->input('registrationNumber');
-//        return response()->json(['registrationNumber' => $regNumber]);
-//    }
 
     public function filterCars(Request $request)
     {

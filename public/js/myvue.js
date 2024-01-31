@@ -14319,12 +14319,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   data: {
     message: '',
-    cars: [] // Array to store the cars
+    cars: window.cars || []
   },
   methods: {
     submitData: function submitData() {
       var _this = this;
-      console.log('asd');
       // Use this.message to send the registration number entered by the user
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/cars/filter', {
         registrationNumber: this.message

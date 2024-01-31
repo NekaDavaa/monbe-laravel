@@ -26,7 +26,6 @@ class CarController extends Controller
     {
         $registrationNumber = $request->input('registrationNumber');
 
-
         if (!empty($registrationNumber)) {
             $cars = Car::whereHas('registrationNumber', function (Builder $query) use ($registrationNumber) {
                 $query->where('registration_number', $registrationNumber);
@@ -35,10 +34,6 @@ class CarController extends Controller
             $cars = Car::all();
         }
 
-
-             //return response('ok');
-        //return response()->json($registrationNumber);
-        //$cars = [1, 2];
         return response()->json(['cars' => $cars]);
     }
 

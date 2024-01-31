@@ -14318,18 +14318,33 @@ __webpack_require__.r(__webpack_exports__);
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   data: {
-    message: ''
+    message: '',
+    cars: [] // Array to store the cars
   },
   methods: {
     submitData: function submitData() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/submit', {
+      var _this = this;
+      console.log('asd');
+      // Use this.message to send the registration number entered by the user
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/cars/filter', {
         registrationNumber: this.message
       }).then(function (response) {
-        console.log(response.data);
-        // Handle your response here
+        // Update the cars data
+        _this.cars = response.data.cars.map(function (car) {
+          return {
+            car_id: car.id,
+            car_name: car.car_name
+
+            // ... other properties
+          };
+        });
+        console.log('Updated cars array:', _this.cars);
+
+        // Optionally, log the response data
+        console.log('Response data:', response.data);
       })["catch"](function (error) {
-        console.error(error);
-        // Handle your error here
+        // Handle errors
+        console.error('Error:', error);
       });
     }
   }

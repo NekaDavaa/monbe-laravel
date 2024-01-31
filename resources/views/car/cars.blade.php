@@ -2,28 +2,6 @@
 @section('title', 'Cars')
 @section('content')
 
-
-    <div id="app">
-        <h1>Търсачка:</h1>
-        <input
-            type="text"
-            name="reg_filter"
-            v-model="message"
-            placeholder="Enter registration number"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-400 focus:ring-red-400"
-        />
-        <button @click="submitData">Submit</button>
-    </div>
-
-
-    <div id="cars-list">
-
-    </div>
-
-
-
-
-
     <div class="flex justify-between items-center">
         <h1 class="text-3xl font-semibold text-gray-700 mb-4">
             All Cars
@@ -34,6 +12,8 @@
             </a>
 {{--        @endauth--}}
     </div>
+
+
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         @if(session('notification'))
@@ -46,6 +26,33 @@
                 </div>
             </div>
         @endif
+
+
+
+            <div id="app">
+                <h1>Търсачка:</h1>
+                <input
+                    type="text"
+                    name="reg_filter"
+                    v-model="message"
+                    placeholder="Enter registration number"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-400 focus:ring-red-400"
+                />
+                <button @click="submitData">Submit</button>
+
+
+                <table>
+                    <tbody>
+                    @verbatim
+                        <tr v-for="car in cars" :key="car.car_id" class="odd:bg-white even:bg-gray-50 border-b">
+                            <td class="px-6 py-4">{{ car.car_name }}</td>
+                        </tr>
+                    @endverbatim
+                    </tbody>
+                </table>
+
+            </div>
+
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 table-auto">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
@@ -104,4 +111,10 @@
         </table>
 {{--        {{ $articles->links() }}--}}
     </div>
+
+
+
+
+
+
 @endsection

@@ -2,6 +2,7 @@
 @section('title', 'Cars')
 @section('content')
 
+
     <div id="app">
         <h1>Търсачка:</h1>
         <input
@@ -13,6 +14,13 @@
         />
         <button @click="submitData">Submit</button>
     </div>
+
+
+    <div id="cars-list">
+
+    </div>
+
+
 
 
 

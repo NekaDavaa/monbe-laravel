@@ -56,6 +56,7 @@
     </div>
 </main>
 <script src="{{ asset('js/myvue.js') }}"></script>
+<script src="{{ asset('js/vuefe.js') }}"></script>
 </body>
 </html>
 

@@ -18,7 +18,6 @@ class CarController extends Controller
     public function index(Request $request)
     {
         $registrationNumber = '';
-
         if (!empty($registrationNumber)) {
             $cars = Car::whereHas('registrationNumber', function (Builder $query) use ($registrationNumber) {
                 $query->where('registration_number', $registrationNumber);
@@ -34,12 +33,26 @@ class CarController extends Controller
 
     public function submit(Request $request)
     {
-        $regNumber = $request->input('reg_number');
-        session(['regNumber' => $regNumber]);
-        // Process the regNumber here...
-
-        return response()->json(['regNumber' => $regNumber]);
+        $regNumber = $request->input('registrationNumber');
+        return response()->json(['registrationNumber' => $regNumber]);
     }
+
+    public function filterCars(Request $request)
+    {
+        $registrationNumber = $request->input('registrationNumber');
+
+        if (!empty($registrationNumber)) {
+            $cars = Car::whereHas('registrationNumber', function (Builder $query) use ($registrationNumber) {
+                $query->where('registration_number', $registrationNumber);
+            })->orderBy('id', 'desc')->get();
+        } else {
+            $cars = Car::all();
+        }
+
+        
+        return response()->json(['cars' => $cars]);
+    }
+
 
 
 

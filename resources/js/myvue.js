@@ -8,7 +8,7 @@ var app = new Vue({
     },
     methods: {
         submitData() {
-            axios.post('/submit', { reg_number: this.message })
+            axios.post('/submit', { registrationNumber: this.message })
                 .then(response => {
                     console.log(response.data);
                     // Handle your response here

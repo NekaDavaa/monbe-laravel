@@ -14323,7 +14323,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   methods: {
     submitData: function submitData() {
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/submit', {
-        reg_number: this.message
+        registrationNumber: this.message
       }).then(function (response) {
         console.log(response.data);
         // Handle your response here

@@ -17,7 +17,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $registrationNumber = '';
+        $registrationNumber = 'СО7837ВС';
 
         if (!empty($registrationNumber)) {
             $cars = Car::whereHas('registrationNumber', function (Builder $query) use ($registrationNumber) {
@@ -26,6 +26,7 @@ class CarController extends Controller
         } else {
             $cars = Car::all();
         }
+
         return view('car.cars', compact('cars'));
     }
 

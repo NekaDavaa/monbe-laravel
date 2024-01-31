@@ -12044,7 +12044,7 @@ __webpack_require__.r(__webpack_exports__);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]({
   el: '#app',
   data: {
-    message: 'Hello Vue!'
+    message: ''
   }
 });
 })();

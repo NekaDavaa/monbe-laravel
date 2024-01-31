@@ -3,8 +3,8 @@
 @section('content')
 
     <div id="app">
-        <h1>@{{ message }}</h1>
-        <input v-model="message" />
+        <h1>Търсачка:</h1>
+        <input type="text" name="reg_filter" v-model="message" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-400 focus:ring-red-400" />
     </div>
 
     <div class="flex justify-between items-center">

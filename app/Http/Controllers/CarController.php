@@ -15,9 +15,9 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $registrationNumber = 'СО7837ВС';
+        $registrationNumber = '';
 
         if (!empty($registrationNumber)) {
             $cars = Car::whereHas('registrationNumber', function (Builder $query) use ($registrationNumber) {

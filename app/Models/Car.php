@@ -19,4 +19,7 @@ class Car extends Model
     public function windows(){
         return $this->hasMany(Window::class);
     }
+    public function races(){
+        return $this->belongsToMany(Driver::class);
+    }
 }

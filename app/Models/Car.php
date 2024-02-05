@@ -13,4 +13,7 @@ class Car extends Model
     {
         return $this->hasOne(RegistrationNumber::class);
     }
+    public function drivers(){
+        return $this->hasMany(Driver::class);
+    }
 }

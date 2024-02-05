@@ -16,4 +16,7 @@ class Car extends Model
     public function drivers(){
         return $this->hasMany(Driver::class);
     }
+    public function windows(){
+        return $this->hasMany(Window::class);
+    }
 }

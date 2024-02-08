@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\WelcomeHomepage;
 use App\Http\Requests\WelcomeRequest;
 use Illuminate\Http\Request;
+use App\Mail\GreetingsMail;
+use Illuminate\Support\Facades\Mail;
 
 class WelcomeController extends Controller
 {
@@ -14,8 +17,10 @@ class WelcomeController extends Controller
      */
     public function index(WelcomeRequest $request)
     {
+        dd($this->firstName);
         $first_name = $request->input('first_name');
         session()->flash('first_name', $first_name);
+        event(new WelcomeHomepage($first_name));
         return redirect('/');
     }
 

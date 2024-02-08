@@ -31,6 +31,6 @@ class ArticleDeleted extends Mailable
     {
         return $this->view('emails.articles.deleted')->with([
             'articleTitle' => $this->article->title,
-        ]);
+        ])->from('monbe@dev.bg', 'Antonio Pavlov')->subject('Primerna Tema');
     }
 }

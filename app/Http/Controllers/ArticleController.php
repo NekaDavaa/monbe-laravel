@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Mail\ArticlePosted;
+use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends Controller
 {
@@ -44,6 +46,7 @@ class ArticleController extends Controller
         $article->title = $request->article_title;
         $article->content = $request->article_content;
         $article->save();
+        Mail::to($request->user())->send(new ArticlePosted($article));
         return redirect()->route('articles')->with('notification', 'Записът е създаден успешно!');
     }
 

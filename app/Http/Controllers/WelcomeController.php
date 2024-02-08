@@ -17,7 +17,6 @@ class WelcomeController extends Controller
      */
     public function index(WelcomeRequest $request)
     {
-        dd($this->firstName);
         $first_name = $request->input('first_name');
         session()->flash('first_name', $first_name);
         event(new WelcomeHomepage($first_name));

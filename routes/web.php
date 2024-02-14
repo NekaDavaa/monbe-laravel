@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::post('/cars/new', [CarController::class, 'store'])->name('car.store');
 Route::get('/car/delete/{id?}', [CarController::class, 'destroy'])->name('car.destroy');
 Route::post('/submit', [CarController::class, 'submit'])->name('car.submit');
 Route::post('/cars/filter', [CarController::class, 'filterCars'])->name('cars.filter');
+Route::get('/course/index/', [CourseController::class, 'index'])->name('course.index');
 
 
 

@@ -40,6 +40,7 @@ Route::get('/car/delete/{id?}', [CarController::class, 'destroy'])->name('car.de
 Route::post('/submit', [CarController::class, 'submit'])->name('car.submit');
 Route::post('/cars/filter', [CarController::class, 'filterCars'])->name('cars.filter');
 Route::get('/course/index/', [CourseController::class, 'index'])->name('course.index');
+Route::post('/course/upload', [CourseController::class, 'uploadFile'])->name('course.upload');
 
 
 

@@ -6,6 +6,8 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCourseRequest;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class CourseController extends Controller
 {
@@ -16,7 +18,30 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view ('course.index');
+        $files = Course::where('file_name', '<>', '')->get();
+
+        return view('course.index', compact('files'));
+    }
+
+    public function uploadFile(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file',
+        ]);
+
+        $file = $request->file('file');
+        $fileName = time().'_'.$file->getClientOriginalName();
+        $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+        // Assuming you have a file_name column in your courses table
+        $course = new Course();
+        $course->file_name = $fileName;
+        $course->name = 'asd';
+        $course->description = 'asd';
+        $course->price = '60';
+        $course->save();
+
+        return back()->with('success', 'File has been uploaded.');
     }
 
     /**

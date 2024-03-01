@@ -29,7 +29,9 @@ class CarController extends Controller
         if (!empty($registrationNumber)) {
             $cars = Car::whereHas('registrationNumber', function (Builder $query) use ($registrationNumber) {
                 $query->where('registration_number', $registrationNumber);
-            })->orderBy('id', 'desc')->get();
+            })
+                ->orderBy('id', 'desc')
+                ->get();
         } else {
             $cars = Car::all();
         }
